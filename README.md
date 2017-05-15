@@ -1,2 +1,2 @@
 # video-application-course
-Symphony Course from Udemy 2017
+Video application made with Symfony - Udemy course 2017
