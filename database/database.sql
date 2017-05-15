@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS video_application;
 USE video_application;
 
-CREATE TABLE users(
+CREATE TABLE user(
     id          int(255) auto_increment not null,
     role        varchar(20),
     name        varchar(255),
@@ -14,7 +14,7 @@ CREATE TABLE users(
     CONSTRAINT pk_users PRIMARY KEY(id)
 )ENGINE=InnoDb;
 
-CREATE TABLE videos(
+CREATE TABLE video(
     id          int(255) auto_increment not null,
     user_id     int(255),
     title       varchar(255),
@@ -26,10 +26,10 @@ CREATE TABLE videos(
     updated_at  datetime DEFAULT NULL,
     
     CONSTRAINT pk_videos PRIMARY KEY(id),
-    CONSTRAINT fk_videos_users FOREIGN KEY(user_id) REFERENCES users(id)
+    CONSTRAINT fk_videos_users FOREIGN KEY(user_id) REFERENCES user(id)
 )ENGINE=InnoDb;
 
-CREATE TABLE comments(
+CREATE TABLE comment(
     id          int(255) auto_increment not null,
     video_id    int(255) not null,
     user_id     int(255) not null,
@@ -38,6 +38,6 @@ CREATE TABLE comments(
     updated_at  datetime DEFAULT NULL,
     
     CONSTRAINT pk_videos PRIMARY KEY(id),
-    CONSTRAINT fk_comments_videos FOREIGN KEY(video_id) REFERENCES videos(id),
-    CONSTRAINT fk_comments_users FOREIGN KEY(user_id) REFERENCES users(id)
+    CONSTRAINT fk_comments_videos FOREIGN KEY(video_id) REFERENCES video(id),
+    CONSTRAINT fk_comments_users FOREIGN KEY(user_id) REFERENCES user(id)
 )ENGINE=InnoDb;
